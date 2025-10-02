@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ПрофНавигатор: Чкаловский район</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>🧭 Компас профессий дошкольника</h1>
+                <span>Чкаловский район Екатеринбурга</span>
+            </div>
+            <nav class="nav">
+                <a href="#professions" class="nav-link">Профессии</a>
+                <a href="#schedule" class="nav-link">Расписание</a>
+                <a href="#contacts" class="nav-link">Контакты</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Главный баннер -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Путешествие в мир профессий начинается!</h1>
+                <p>Организация профессиональных проб для дошкольников детских садов Чкаловского района</p>
+                <button class="cta-button" onclick="scrollToProfessions()">Выбрать профессию</button>
+            </div>
+            <div class="hero-image">
+                <div class="floating-icons">
+                    <span class="icon">👨‍⚕️</span>
+                    <span class="icon">👨‍🍳</span>
+                    <span class="icon">👨‍🔬</span>
+                    <span class="icon">👨‍🎨</span>
+                    <span class="icon">👨‍🚀</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок статистики -->
+    <section class="stats">
+        <div class="container">
+            <div class="stat-item">
+                <div class="stat-number" id="professionsCount">15</div>
+                <div class="stat-label">Профессий</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="kindergartensCount">28</div>
+                <div class="stat-label">Детских садов</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" id="eventsCount">156</div>
+                <div class="stat-label">Мероприятий в месяц</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Основной раздел с профессиями -->
+    <section id="professions" class="professions-section">
+        <div class="container">
+            <h2>Выберите профессию</h2>
+            
+            <div class="professions-layout">
+                <!-- Сайдбар с профессиями -->
+                <div class="professions-sidebar">
+                    <div class="search-box">
+                        <input type="text" id="professionSearch" placeholder="Поиск профессии..." onkeyup="filterProfessions()">
+                    </div>
+                    <div class="professions-list" id="professionsList">
+                        <!-- Список профессий генерируется JavaScript -->
+                    </div>
+                </div>
+
+                <!-- Основной контент -->
+                <div class="professions-content">
+                    <div class="selected-profession" id="selectedProfession">
+                        <div class="profession-header">
+                            <h3>Выберите профессию из списка</h3>
+                            <p>Посмотрите, какие детские сады проводят мастер-классы</p>
+                        </div>
+                    </div>
+
+                    <div class="kindergartens-list" id="kindergartensList">
+                        <!-- Список детских садов генерируется динамически -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Модальное окно записи -->
+<div class="modal" id="registrationModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>🎯 Запись на профпробу</h3>
+            <span class="close" onclick="closeModal()">&times;</span>
+        </div>
+        <div class="modal-body">
+            <form id="registrationForm" onsubmit="submitForm(event)">
+                <!-- Информация о мероприятии -->
+                <div class="form-section">
+                    <h4>📋 Информация о мероприятии</h4>
+                    <div class="form-group">
+                        <label>Профессия:</label>
+                        <input type="text" id="modalProfession" value="Врач" readonly class="readonly-input">
+                    </div>
+                    <div class="form-group">
+                        <label>Детский сад:</label>
+                        <input type="text" id="modalKindergarten" value="Детский сад № 45" readonly class="readonly-input">
+                    </div>
+                    <div class="form-group">
+                        <label>Дата и время:</label>
+                        <input type="text" id="modalDateTime" value="Понедельник, 2024-01-15 10:00-11:30" readonly class="readonly-input">
+                    </div>
+                </div>
+
+                <!-- Данные для записи -->
+                <div class="form-section">
+                    <h4>👥 Данные для записи</h4>
+                    <div class="form-group">
+                        <label for="guestKindergarten">Ваш детский сад *</label>
+                        <select id="guestKindergarten" required>
+                            <option value="">Выберите детский сад</option>
+                            <option value="Детский сад № 1">Детский сад № 1</option>
+                            <option value="Детский сад № 2">Детский сад № 2</option>
+                            <option value="Детский сад № 3">Детский сад № 3</option>
+                            <option value="Детский сад № 4">Детский сад № 4</option>
+                            <option value="Детский сад № 5">Детский сад № 5</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="childrenCount">Количество детей *</label>
+                        <input type="number" id="childrenCount" min="1" max="25" required placeholder="Введите количество детей">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="educatorName">ФИО воспитателя *</label>
+                        <input type="text" id="educatorName" required placeholder="Иванова Мария Петровна">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Контактный телефон *</label>
+                        <input type="tel" id="phone" required placeholder="+7 (999) 123-45-67">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="vash@email.ru">
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="cancel-btn" onclick="closeModal()">Отмена</button>
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-icon">📨</span>
+                        Отправить заявку
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+    <!-- Уведомление -->
+    <div id="notification" class="notification"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
