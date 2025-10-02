@@ -1,0 +1,737 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Шапка - мобильная версия */
+.header {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 0.8rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo h1 {
+    color: #4a5568;
+    font-size: 1.4rem;
+    margin-bottom: 0.2rem;
+}
+
+.logo span {
+    color: #718096;
+    font-size: 0.8rem;
+    display: block;
+}
+
+.nav {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #4a5568;
+    font-weight: 600;
+    transition: color 0.3s;
+    font-size: 0.9rem;
+    padding: 0.3rem 0.6rem;
+}
+
+.nav-link:hover {
+    color: #667eea;
+}
+
+/* Главный баннер - мобильная версия */
+.hero {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    margin-top: 70px;
+    padding: 2rem 0;
+    color: white;
+}
+
+.hero .container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.hero-content p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    opacity: 0.9;
+}
+
+.cta-button {
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    font-weight: 600;
+    width: 100%;
+    max-width: 250px;
+}
+
+.cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(255, 107, 107, 0.3);
+}
+
+.hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.floating-icons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+    max-width: 200px;
+}
+
+.icon {
+    font-size: 2rem;
+    animation: float 3s ease-in-out infinite;
+}
+
+.icon:nth-child(2) { animation-delay: 0.2s; }
+.icon:nth-child(3) { animation-delay: 0.4s; }
+.icon:nth-child(4) { animation-delay: 0.6s; }
+.icon:nth-child(5) { animation-delay: 0.8s; }
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Статистика - мобильная версия */
+.stats {
+    background: white;
+    padding: 2rem 0;
+    text-align: center;
+}
+
+.stats .container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.stat-item {
+    padding: 0.8rem;
+}
+
+.stat-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #667eea;
+    margin-bottom: 0.3rem;
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: #4a5568;
+    font-weight: 600;
+}
+
+/* Раздел профессий - мобильная версия */
+.professions-section {
+    background: #f7fafc;
+    padding: 2rem 0;
+    min-height: auto;
+}
+
+.professions-section h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    color: #2d3748;
+}
+
+.professions-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* Сайдбар - мобильная версия */
+.professions-sidebar {
+    background: #4a5568;
+    color: white;
+    padding: 1.5rem;
+    order: 2;
+}
+
+.search-box {
+    margin-bottom: 1.5rem;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+.search-box input::placeholder {
+    color: rgba(255,255,255,0.7);
+}
+
+.professions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.profession-item {
+    padding: 0.8rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+    border: none;
+    color: white;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.profession-item:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.profession-item.active {
+    background: #667eea;
+    font-weight: 600;
+}
+
+/* Основной контент - мобильная версия */
+.professions-content {
+    padding: 1.5rem;
+    order: 1;
+}
+
+.profession-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    border-radius: 12px;
+    color: white;
+}
+
+.profession-header h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.profession-header p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Список детских садов - мобильная версия */
+.kindergartens-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.kindergarten-card {
+    background: white;
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.2rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.kindergarten-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    border-color: #667eea;
+}
+
+.kindergarten-header {
+    margin-bottom: 0.8rem;
+}
+
+.kindergarten-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 0.3rem;
+}
+
+.kindergarten-address {
+    color: #718096;
+    font-size: 0.85rem;
+    margin-bottom: 0.5rem;
+}
+
+.schedule-item {
+    background: #f7fafc;
+    padding: 0.8rem;
+    border-radius: 8px;
+    margin-bottom: 0.8rem;
+    border-left: 4px solid #667eea;
+}
+
+.schedule-time {
+    font-weight: 600;
+    color: #2d3748;
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+}
+
+.schedule-details {
+    color: #718096;
+    font-size: 0.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.register-btn {
+    background: #48bb78;
+    color: white;
+    border: none;
+    padding: 0.7rem 1.2rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background 0.3s;
+    width: 100%;
+    margin-top: 0.8rem;
+    font-size: 0.9rem;
+}
+
+.register-btn:hover {
+    background: #38a169;
+}
+
+/* Модальное окно - мобильная версия */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    backdrop-filter: blur(5px);
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.modal-content {
+    background: white;
+    margin: 10px auto;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+    color: #333;
+    animation: modalSlideIn 0.3s ease-out;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    max-height: 95vh;
+    overflow-y: auto;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    border-radius: 12px 12px 0 0;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.modal-header h3 {
+    margin: 0;
+    color: white;
+    font-size: 1.2rem;
+}
+
+.close {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: white;
+    background: none;
+    border: none;
+    padding: 0;
+    width: 25px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.close:hover {
+    opacity: 0.8;
+}
+
+.modal-body {
+    padding: 0;
+}
+
+/* Секции формы - мобильная версия */
+.form-section {
+    padding: 1.2rem 1.5rem;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.form-section:last-of-type {
+    border-bottom: none;
+}
+
+.form-section h4 {
+    margin: 0 0 1rem 0;
+    color: #4a5568;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+/* Группы полей - мобильная версия */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.4rem;
+    font-weight: 600;
+    color: #4a5568;
+    font-size: 0.85rem;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    font-family: 'Nunito', sans-serif;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.readonly-input {
+    background: #f8fafc !important;
+    color: #64748b !important;
+    border-color: #e2e8f0 !important;
+    cursor: not-allowed;
+}
+
+.form-group input::placeholder {
+    color: #a0aec0;
+    font-size: 0.85rem;
+}
+
+/* Кнопки - мобильная версия */
+.form-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    padding: 1.2rem 1.5rem;
+    background: #f8fafc;
+    border-radius: 0 0 12px 12px;
+    position: sticky;
+    bottom: 0;
+    background: white;
+    border-top: 1px solid #e2e8f0;
+}
+
+.cancel-btn {
+    padding: 0.8rem 1.2rem;
+    border: 2px solid #cbd5e0;
+    background: white;
+    color: #64748b;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    order: 2;
+}
+
+.cancel-btn:hover {
+    border-color: #94a3b8;
+    color: #475569;
+}
+
+.submit-btn {
+    padding: 0.8rem 1.2rem;
+    background: linear-gradient(135deg, #48bb78, #38a169);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    order: 1;
+}
+
+.submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(72, 187, 120, 0.4);
+}
+
+.btn-icon {
+    font-size: 1rem;
+}
+
+/* Анимация */
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Уведомление - мобильная версия */
+.notification {
+    position: fixed;
+    top: 80px;
+    right: 10px;
+    left: 10px;
+    padding: 0.8rem 1.2rem;
+    background: #48bb78;
+    color: white;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    transform: translateY(-100px);
+    transition: transform 0.3s ease-out;
+    z-index: 2000;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.notification.show {
+    transform: translateY(0);
+}
+
+.notification.error {
+    background: #f56565;
+}
+
+/* Адаптивность для очень маленьких экранов */
+@media (max-width: 480px) {
+    .container {
+        padding: 0 10px;
+    }
+    
+    .logo h1 {
+        font-size: 1.2rem;
+    }
+    
+    .logo span {
+        font-size: 0.7rem;
+    }
+    
+    .nav {
+        gap: 0.5rem;
+    }
+    
+    .nav-link {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.4rem;
+    }
+    
+    .hero-content h1 {
+        font-size: 1.6rem;
+    }
+    
+    .hero-content p {
+        font-size: 0.9rem;
+    }
+    
+    .stats .container {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+    
+    .stat-number {
+        font-size: 1.8rem;
+    }
+    
+    .professions-section h2 {
+        font-size: 1.5rem;
+    }
+    
+    .profession-header h3 {
+        font-size: 1.3rem;
+    }
+    
+    .form-section {
+        padding: 1rem 1.2rem;
+    }
+    
+    .modal-header {
+        padding: 1rem 1.2rem;
+    }
+    
+    .form-actions {
+        padding: 1rem 1.2rem;
+    }
+}
+
+/* Планшеты */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .professions-layout {
+        grid-template-columns: 250px 1fr;
+    }
+    
+    .hero .container {
+        grid-template-columns: 1fr 1fr;
+        text-align: left;
+    }
+    
+    .hero-content {
+        text-align: left;
+    }
+    
+    .cta-button {
+        width: auto;
+    }
+}
+
+/* Десктоп */
+@media (min-width: 1025px) {
+    .professions-layout {
+        display: grid;
+        grid-template-columns: 300px 1fr;
+        flex-direction: row;
+    }
+    
+    .professions-sidebar {
+        order: 1;
+    }
+    
+    .professions-content {
+        order: 2;
+    }
+    
+    .hero .container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        text-align: left;
+    }
+    
+    .hero-content {
+        text-align: left;
+    }
+    
+    .cta-button {
+        width: auto;
+    }
+    
+    .form-actions {
+        flex-direction: row;
+    }
+    
+    .cancel-btn {
+        order: 1;
+    }
+    
+    .submit-btn {
+        order: 2;
+    }
+}
+
+/* Предотвращение zoom при фокусе на iOS */
+@media screen and (max-width: 768px) {
+    input, select, textarea {
+        font-size: 16px !important;
+    }
+}
+
+/* Улучшение скролла на мобильных */
+.professions-list::-webkit-scrollbar {
+    width: 4px;
+}
+
+.professions-list::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.1);
+    border-radius: 2px;
+}
+
+.professions-list::-webkit-scrollbar-thumb {
+    background: rgba(255,255,255,0.3);
+    border-radius: 2px;
+}
+
+.professions-list::-webkit-scrollbar-thumb:hover {
+    background: rgba(255,255,255,0.5);
+}
